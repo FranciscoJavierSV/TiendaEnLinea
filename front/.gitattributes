@@ -1,0 +1,16 @@
+# Fuerza a que todos los archivos de texto usen LF en el repo
+* text=auto eol=lf
+
+# Archivos específicos que deben mantener CRLF (ejemplo: scripts de Windows)
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Archivos binarios: no tocar
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.gz binary
