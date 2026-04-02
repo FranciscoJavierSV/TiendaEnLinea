@@ -1,0 +1,124 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  padding: 0.5rem 1rem;
+  font-size: var(--font-size-text);
+  position: relative; /* necesario para el menú desplegable */
+}
+
+/* Logo */
+.fa-brands {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+/* Links */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.navbar-links li a {
+  text-decoration: none;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-size: var(--font-size-text);
+}
+
+.navbar-links li a:hover {
+  color: var(--color-text-hover);
+  background-color: var(--color-bg-hover);
+}
+
+/* Botón reducida */
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+}
+
+.navbar-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-text);
+  transition: all 0.3s ease;
+}
+
+/* estilo del boton del tema*/
+.BotonD {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 5rem;
+  height: 2rem;
+  border-radius: 20px;
+  border: 2px solid var(--color-text);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  padding: 0 12px;
+  transition: all 0.3s ease;
+}
+.BotonD i {
+  font-size: 1.2rem;
+  transition: opacity 0.3s ease;
+}
+/*=================================================*/
+/* encendido y apagado */
+.BotonD .fa-sun {
+  opacity: 1;
+  color: #fbc02d;
+}
+.BotonD .fa-moon {
+  opacity: 0;
+}
+
+
+/* tema negro */
+.dark-theme .BotonD {
+  background-color: #333;
+  border-color: #fff;
+  color: #fff;
+}
+.dark-theme .BotonD .fa-sun {
+  opacity: 0;
+}
+.dark-theme .BotonD .fa-moon {
+  opacity: 1;
+  color: #90caf9;
+}
+/*=========================================*/
+
+/* Responsividad Navbar */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none; 
+    flex-direction: column;
+    background-color: var(--color-bg);
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 1rem;
+    border: 1px solid var(--color-text);
+    border-radius: 8px;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+
+  .navbar-toggle {
+    display: flex;
+  }
+}
