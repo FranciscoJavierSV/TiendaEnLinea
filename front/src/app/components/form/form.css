@@ -1,0 +1,26 @@
+:host {
+    display: block;
+    width: 40%;
+    padding: 1rem 4rem;
+    background-color: rgb(141, 141, 141);
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+form > *{
+    margin: 3px;
+}
+
+#texto{
+    padding: .8rem;
+}
+
+
+.dark-theme :host{
+    background-color: black;
+}

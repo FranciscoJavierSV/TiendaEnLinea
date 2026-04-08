@@ -1,0 +1,103 @@
+:host {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #ff8787;
+    border-radius: 1rem;
+    color: white;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+:host.dark-theme {
+    background-color: #c00000;
+    color: #eeeeee;
+}
+
+.form {
+    width: 100%;
+}
+
+.section {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 1rem 0;
+}
+
+input,
+textarea,
+button {
+    font-size: 1.5rem;
+    padding: .5rem;
+    border-radius: .5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.checkbox-group label {
+    margin: 0;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    transform: scale(1.5);
+    margin-left: 0.5rem;
+}
+
+button {
+    color: white;
+    background-color: black;
+}
+
+button:hover {
+    color: black;
+    background-color: white;
+}
+
+@media (max-width: 1024px) {
+    :host {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    :host {
+        font-size: 1.2rem;
+    }
+
+    .section {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    :host {
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
+
+    input,
+    textarea,
+    button {
+        font-size: 1rem;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+        transform: scale(1.2);
+    }
+}

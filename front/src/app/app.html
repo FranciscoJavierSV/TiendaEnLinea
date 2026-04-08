@@ -1,4 +1,8 @@
-<app-navbar></app-navbar>
-<hr>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<div [class.dark-theme]="(themeService.darkTheme$ | async)">
+    <app-navbar></app-navbar>
+    <hr>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+    <app-footer></app-footer>
+</div>

@@ -13,6 +13,7 @@ import { Theme } from '../../services/ui/theme';
 export class Navbar {
   menuActivo = false;
   constructor(public themeService: Theme) { }
+  
   toggleTheme() {
     this.themeService.toggleTheme();
   }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Theme } from '../../services/ui/theme';
 import { CommonModule } from '@angular/common';
+import { Theme } from '../../services/ui/theme';
+
 
 @Component({
   selector: 'app-footer',
@@ -9,5 +10,6 @@ import { CommonModule } from '@angular/common';
   styleUrl: './footer.css',
 })
 export class Footer {
-      constructor(public themeService: Theme) {}
+    constructor(public themeService: Theme) { }
+
 }

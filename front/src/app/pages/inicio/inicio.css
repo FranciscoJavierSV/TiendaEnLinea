@@ -1,0 +1,35 @@
+:host {
+    display: block;
+    width: 80%;
+    padding: 1rem 4rem;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    color: #333333;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+
+.contact {
+    display: flex;
+    background-color: burlywood;
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+    padding: 1rem 3rem;
+}
+
+.left {
+    border: 1px solid #333;
+    flex: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.right {
+    padding: 2rem;
+    border: 1px solid #333;
+    flex: 6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

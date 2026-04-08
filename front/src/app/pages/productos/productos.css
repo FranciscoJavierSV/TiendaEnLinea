@@ -1,0 +1,27 @@
+:host {
+    display: block;
+    width: 80%;
+    padding: 1rem 4rem;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: justify;
+    background-color: blueviolet;
+    border-radius: 1rem;
+}
+
+.productos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.producto {
+    padding: 1rem 2rem;
+    background-color: #333333;
+    border-radius: 1rem;
+    color: aliceblue;
+    margin: 0.5rem;
+}

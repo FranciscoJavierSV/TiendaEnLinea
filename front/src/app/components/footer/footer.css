@@ -3,11 +3,11 @@
   flex-direction: column;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  font-size: var(--font-size-text);
+  background-color: #f0f8ff;
+  color: #222222;
+  font-size: 1rem;
   transition: all 0.3s ease;
-  border-top: 2px solid var(--color-text);
+  border-top: 2px solid #222222;
 }
 
 .footer .content {
@@ -19,13 +19,8 @@
   margin-bottom: 1rem;
 }
 
-.footer-left h3 {
-  margin-bottom: 0.5rem;
-}
-
-.footer-left .datos p {
-  margin: 0.2rem 0;
-}
+.footer-left h3 { margin-bottom: 0.5rem; }
+.footer-left .datos p { margin: 0.2rem 0; }
 
 .footer-right {
   display: flex;
@@ -33,12 +28,10 @@
   align-items: flex-end;
 }
 
-.footer-right p {
-  margin-bottom: 0.5rem;
-}
+.footer-right p { margin-bottom: 0.5rem; }
 
 .footer-right .redes {
-  display: flex;  
+  display: flex;
   gap: 0.8rem;
   flex-direction: row;
 }
@@ -50,16 +43,14 @@
   transition: color 0.3s ease;
 }
 
-.footer-right .redes a:hover {
-  color: var(--color-text-hover);
-}
+.footer-right .redes a:hover { color: #ffffff; }
 
-/* hr y copyright */
 .footer hr {
   width: 100%;
   border: none;
-  border-top: 1px solid var(--color-text);
+  border-top: 1px solid #222222;
   margin: 0.5rem 0;
+  transition: all 0.3s ease;
 }
 
 .footer > p {
@@ -68,18 +59,18 @@
   font-size: 0.9rem;
 }
 
-/* Modo oscuro */
-.dark-theme.footer {
+/* Tema oscuro aplicado directamente al host */
+.footer.dark-theme {
   background-color: #121212;
   color: #e0e0e0;
   border-top: 2px solid #e0e0e0;
 }
 
-.dark-theme.footer hr {
+.footer.dark-theme hr {
   border-top: 1px solid #e0e0e0;
 }
 
-/* Responsividad tablet: mantiene fila */
+/* Responsividad tablet */
 @media (max-width: 1024px) {
   .footer .content {
     flex-direction: column;
@@ -88,13 +79,8 @@
     gap: 0.5rem;
   }
 
-  .footer-left .datos p {
-    margin: 0.1rem 0; 
-  }
-
-  .footer-right {
-    align-items: center;
-  }
+  .footer-left .datos p { margin: 0.1rem 0; }
+  .footer-right { align-items: center; }
 
   .footer-right .redes {
     justify-content: center;
@@ -102,7 +88,7 @@
   }
 }
 
-/* Responsividad móvil: aquí sí se apilan */
+/* Responsividad móvil */
 @media (max-width: 600px) {
   .footer {
     font-size: 0.8rem;
@@ -110,7 +96,7 @@
   }
 
   .footer-right .redes {
-    flex-direction: column;   /* iconos apilados solo en mobile */
+    flex-direction: column;
     gap: 0.5rem;
     align-items: center;
   }
