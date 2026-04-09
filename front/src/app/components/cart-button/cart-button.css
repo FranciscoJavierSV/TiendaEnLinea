@@ -1,0 +1,56 @@
+.cart-fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background-color: #1976d2;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 1000;
+  font-size: 1.2rem;
+}
+
+.cart-fab:hover {
+  background-color: #1565c0;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #ff4444;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.material-icons {
+  font-size: 24px;
+}
+
+/* Dark theme */
+.cart-fab.dark-theme {
+  background-color: #00695c;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+}
+
+.cart-fab.dark-theme:hover {
+  background-color: #00897b;
+}
+
+.cart-fab.dark-theme .badge {
+  background-color: #ff6b6b;
+}

@@ -11,5 +11,6 @@
     <p>Disponible: {{ c.disponibilidad ? 'Sí' : 'No' }}</p>
     <img [src]="c.imagen" alt="{{ c.nombre }}">
     <a routerLink="DetalleP">Ver detalle</a>
+    <button class="add-cart" (click)="addToCart(c)">Agregar al carrito</button>
   </div>
 </div>

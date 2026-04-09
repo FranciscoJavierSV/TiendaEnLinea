@@ -1,0 +1,29 @@
+<div class="backdrop" *ngIf="cartState.isOpen()" (click)="cartState.close()" [class.dark-theme]="(themeService.darkTheme$ | async)">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <h2>Carrito</h2>
+
+    <div *ngIf="items.length === 0" class="empty-cart">
+      <p>Tu carrito está vacío</p>
+    </div>
+
+    <div *ngFor="let item of items" class="cart-item">
+      <img [src]="item.image || 'https://via.placeholder.com/50'" [alt]="item.name" class="item-image">
+      <div class="item-details">
+        <h4>{{ item.name }}</h4>
+        <p>{{ item.price | currency:'EUR' }}</p>
+        <div class="quantity-controls">
+          <button (click)="updateQuantity(item, item.quantity - 1)">-</button>
+          <span>{{ item.quantity }}</span>
+          <button (click)="updateQuantity(item, item.quantity + 1)">+</button>
+        </div>
+      </div>
+      <button (click)="removeItem(item.id)" class="remove-btn">×</button>
+    </div>
+
+    <div *ngIf="items.length > 0" class="cart-total">
+      <button class="clear-btn" (click)="clearCart()">Vaciar carrito</button>
+    </div>
+
+    <button (click)="cartState.close()">Cerrar</button>
+  </div>
+</div>

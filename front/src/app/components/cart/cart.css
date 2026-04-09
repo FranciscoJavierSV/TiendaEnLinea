@@ -1,0 +1,148 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal {
+  background: white;
+  padding: 1rem;
+  width: 300px;
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 8px;
+  overflow-y: auto;
+}
+
+.empty-cart {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.item-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.item-details h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.item-details p {
+  margin: 0.25rem 0;
+  color: #666;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.quantity-controls button {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+}
+
+.remove-btn {
+  background: #ff4444;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.cart-total {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clear-btn {
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    width: 90vw;
+    margin: 1rem;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .item-image {
+    margin-bottom: 0.5rem;
+  }
+
+  .cart-total {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* Dark theme */
+.backdrop.dark-theme {
+  background: rgba(0,0,0,0.8);
+}
+
+.backdrop.dark-theme .modal {
+  background: #2a2a2a;
+  color: #e0e0e0;
+}
+
+.backdrop.dark-theme .cart-item {
+  border-bottom-color: #444;
+}
+
+.backdrop.dark-theme .item-details p {
+  color: #b0b0b0;
+}
+
+.backdrop.dark-theme .quantity-controls button {
+  background: #3a3a3a;
+  border-color: #555;
+  color: #e0e0e0;
+}
+
+.backdrop.dark-theme .cart-total {
+  border-top-color: #444;
+}
+
+.backdrop.dark-theme .clear-btn {
+  background: #3a3a3a;
+  border-color: #555;
+  color: #e0e0e0;
+}

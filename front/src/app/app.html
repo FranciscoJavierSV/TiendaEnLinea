@@ -1,5 +1,7 @@
-<div [class.dark-theme]="(themeService.darkTheme$ | async)">
+<div>
     <app-navbar></app-navbar>
+    <app-cart></app-cart>
+    <app-cart-button></app-cart-button>
     <hr>
     <div class="content">
         <router-outlet></router-outlet>

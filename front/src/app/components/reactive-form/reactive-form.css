@@ -10,7 +10,7 @@
     transition: all 0.3s ease;
 }
 
-:host.dark-theme {
+:host-context(.dark-theme) {
     background-color: #c00000;
     color: #eeeeee;
 }
