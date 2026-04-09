@@ -1,0 +1,81 @@
+:host {
+    display: block;
+    width: 100%;
+    max-width: 440px;
+    padding: 1rem 2rem;
+    background-color: rgb(141, 141, 141);
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+    color: #111111;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+:host-context(.dark-theme) {
+    background-color: #4f5568;
+    color: #e3e7f1;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form > * {
+    margin-bottom: 0.75rem;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.85rem;
+    border: 1px solid #999;
+    border-radius: 0.5rem;
+    background: #ffffff;
+    color: #111111;
+    box-sizing: border-box;
+}
+
+input {
+    min-height: 2.5rem;
+}
+
+textarea {
+    min-height: 140px;
+}
+
+:host-context(.dark-theme) input,
+:host-context(.dark-theme) textarea {
+    background: #2f3444;
+    border-color: #687094;
+    color: #e3e7f1;
+}
+
+button {
+    padding: 0.85rem;
+    border-radius: 0.75rem;
+    border: none;
+    background-color: #333333;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555555;
+}
+
+:host-context(.dark-theme) button {
+    background-color: #2f384f;
+    color: #f1f4ff;
+}
+
+:host-context(.dark-theme) button:hover {
+    background-color: #49516d;
+}
+
+@media (max-width: 768px) {
+    :host {
+        width: 100%;
+        padding: 1rem 1.5rem;
+    }
+}

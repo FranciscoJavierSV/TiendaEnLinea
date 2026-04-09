@@ -1,0 +1,109 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #222222;
+  background-color: #f0f8ff;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.navbar .fa-brands {
+  font-size: 3rem;
+  font-weight: bold;
+  color: inherit;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+  transition: all 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #ffffff;
+  background-color: #444444;
+}
+
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+}
+
+.navbar-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: currentColor;
+  transition: all 0.3s ease;
+}
+
+.BotonD {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 5rem;
+  height: 2rem;
+  border-radius: 20px;
+  border: 2px solid currentColor;
+  background-color: #f0f8ff;
+  color: #222222;
+  cursor: pointer;
+  padding: 0 12px;
+  transition: all 0.3s ease;
+}
+
+.BotonD i {
+  font-size: 1.2rem;
+  transition: opacity 0.3s ease;
+}
+
+.BotonD .fa-sun { opacity: 1; color: #fbc02d; }
+.BotonD .fa-moon { opacity: 0; }
+
+/* Tema oscuro aplicado directamente al nav */
+.navbar.dark-theme {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.navbar.dark-theme .BotonD {
+  background-color: #333333;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.navbar.dark-theme .BotonD .fa-sun { opacity: 0; }
+.navbar.dark-theme .BotonD .fa-moon { opacity: 1; color: #90caf9; }
+
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    background-color: #f0f8ff;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 1rem;
+    border: 1px solid #222222;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-links.active { display: flex; }
+  .navbar-toggle { display: flex; }
+}

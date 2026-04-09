@@ -1,0 +1,7 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <input type="text" class="texto" name="nombre" ngModel required placeholder="Nombre" autocomplete="name">
+    <input type="email" class="texto" name="email" ngModel required placeholder="email" autocomplete="email">
+    <input type="text" class="texto" name="asunto" ngModel placeholder="Asunto" autocomplete="off">
+    <textarea class="texto" name="comentario" ngModel placeholder="Danos tu opinion" rows="6" autocomplete="off"></textarea>
+    <button type="submit">Enviar</button>
+</form>
