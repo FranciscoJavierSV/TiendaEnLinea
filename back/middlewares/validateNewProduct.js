@@ -6,7 +6,6 @@ const validateNewProduct = (req, res,next) => {
 			Marca,
 			Precio,
 			Stock,
-			Descripcion,
 			Disponibilidad
 		} = req.body;
 

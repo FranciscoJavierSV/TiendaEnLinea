@@ -4,7 +4,7 @@ const multer = require("multer");
 const path = require("path");
 
 const productController = require('../controllers/productController');
-const { validateNewProduct } = require('../middlewares/validateMiddleware');
+const { validateNewProduct } = require('../middlewares/validateNewProduct');
 
 // --- MULTER CONFIG ---
 const storage = multer.diskStorage({
@@ -25,31 +25,22 @@ const upload = multer({ storage: storage });
 // Obtener todos los productos
 router.get("/", productController.getAllProducts);
 
-// Obtener producto por ID
-router.get("/:id", productController.getProductById);
-
-// Obtener productos por categoria
-router.get("/categoria/:categoria", productController.getProductsByCategory);
-
 // Obtener categorias disponibles
 router.get("/categorias", productController.getCategories);
+
+// Obtener productos por categoria
+router.get("/producto/:categoria", productController.getProductsByCategory);
+
+// Obtener producto por ID
+router.get("/:id", productController.getProductById);
 
 // --- RUTAS ADMIN ---
 
 // Crear producto 
-router.post(
-	"/",
-	upload.single("image"),
-	validateNewProduct,
-	productController.createProduct
-);
+router.post("/",upload.single("Imagen"),validateNewProduct,productController.createProduct);
 
 // Actualizar producto
-router.put(
-	"/:id",
-	upload.single("image"),
-	productController.updateProduct
-);
+router.put("/:id",upload.single("Imagen"),validateNewProduct,productController.updateProduct);
 
 // Eliminar producto
 router.delete("/:id", productController.deleteProduct);

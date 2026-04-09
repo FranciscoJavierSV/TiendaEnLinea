@@ -1,5 +1,4 @@
 const Product = require('../models/Product');
-const pool = require("../db/conexion"); 
 
 exports.getProductById = async (req, res) => {
 	try {
@@ -74,8 +73,7 @@ exports.createProduct = async (req, res) => {
 		let Imagen = null;
 
 		if (req.file) {
-			const baseUrl = `${req.protocol}://${req.get('host')}`;
-			Imagen = `${baseUrl}/images/${req.file.filename}`;
+			Imagen = `${req.file.filename}`;
 		}
 
 		const newId = await Product.create({
