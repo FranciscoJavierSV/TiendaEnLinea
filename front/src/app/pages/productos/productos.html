@@ -8,7 +8,7 @@
     <p>Marca: {{ c.marca }}</p>
     <p>Precio: ${{ c.precio }}</p>
     <p>Stock: {{ c.stock }}</p>
-    <p>Descripción: {{ c.descripcionCorta }}</p>
+    <p>Descripción: {{ c.descripcion }}</p>
     <p>Disponible: {{ c.disponibilidad ? 'Sí' : 'No' }}</p>
     <a [routerLink]="['/detalleproducto', c.id]">Ver detalle</a>
     <button class="add-cart" (click)="addToCart(c)">Agregar al carrito</button>

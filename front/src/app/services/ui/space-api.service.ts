@@ -23,14 +23,21 @@ export class SpaceApiService {
 
   constructor(private http: HttpClient) {}
 
-  getImageByNasaId(nasaId: string): Observable<SpaceImage> {
-    const url = `${this.baseUrl}/search?nasa_id=${encodeURIComponent(nasaId)}&media_type=image`;
+  getImageByNasaId(nasaId: number): Observable<SpaceImage> {
+
+    const url = `${this.baseUrl}/search?nasa_id=${encodeURIComponent(String(nasaId))}&media_type=image`;
+
     return this.http.get<any>(url).pipe(
       map(response => {
         const item = response.collection?.items?.[0];
-        if (!item) throw new Error('No se encontró la imagen NASA con ese ID');
+
+        if (!item) {
+          throw new Error('No se encontró la imagen NASA con ese ID');
+        }
+
         const data = item.data?.[0] || {};
         const imageUrl = item.links?.[0]?.href || '';
+
         return {
           title: data.title || 'Imagen NASA',
           description: data.description || 'Sin descripción disponible.',

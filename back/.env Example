@@ -1,12 +1,16 @@
-PORT=
-DB_HOST=
-DB_USER=
+# Puerto donde corre tu backend Node
+PORT=3306
+
+# Configuración de la base de datos MySQL local
+DB_HOST=localhost
+DB_USER=root
 DB_PASSWORD=""
-DB_NAME=
-DB_PORT=
+DB_NAME=tienda_cosmicatelier
+DB_PORT=3306
 
-# Nasa API Key
-API_KEY=
+# NASA API Key (puedes usar DEMO_KEY para pruebas)
+API_KEY=DEMO_KEY
 
-FRONT_URL=
-BACK_URL=
+# URLs de tu proyecto
+FRONT_URL=http://localhost:4200
+BACK_URL=http://localhost:3000

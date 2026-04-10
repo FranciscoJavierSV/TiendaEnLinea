@@ -1,16 +1,16 @@
 <div class="detalle-container">
   <div *ngIf="product(); else noProduct">
-    <h1>{{ product().nombre }}</h1>
+    <h1>{{ product()?.nombre }}</h1>
     <div class="product-info">
-      <img [src]="product().imagen" alt="{{ product().nombre }}" class="product-image">
+      <img [src]="product()?.imagen" alt="{{ product()?.nombre }}" class="product-image">
       <div class="product-details">
-        <p><strong>Categoría:</strong> {{ product().categoria }}</p>
-        <p><strong>Marca:</strong> {{ product().marca }}</p>
-        <p><strong>Precio:</strong> ${{ product().precio }}</p>
-        <p><strong>Stock:</strong> {{ product().stock }}</p>
-        <p><strong>Descripción:</strong> {{ product().descripcionCorta }}</p>
-        <p><strong>Disponible:</strong> {{ product().disponibilidad ? 'Sí' : 'No' }}</p>
-        <p *ngIf="product().nasaId"><strong>NASA ID:</strong> {{ product().nasaId }}</p>
+        <p><strong>Categoría:</strong> {{ product()?.categoria }}</p>
+        <p><strong>Marca:</strong> {{ product()?.marca }}</p>
+        <p><strong>Precio:</strong> ${{ product()?.precio }}</p>
+        <p><strong>Stock:</strong> {{ product()?.stock }}</p>
+        <p><strong>Descripción:</strong> {{ product()?.descripcion }}</p>
+        <p><strong>Disponible:</strong> {{ product()?.disponibilidad ? 'Sí' : 'No' }}</p>
+        <p *ngIf="product()?.nasaId"><strong>NASA ID:</strong> {{ product()?.nasaId }}</p>
         <button class="add-cart" (click)="addToCart()">Agregar al carrito</button>
       </div>
     </div>
@@ -29,7 +29,9 @@
             <p><strong>Descripción:</strong> {{ spaceImages()[0].description }}</p>
             <p><strong>Fecha de captura:</strong> {{ spaceImages()[0].dateCreated }}</p>
             <p><strong>Centro:</strong> {{ spaceImages()[0].center }}</p>
-            <p *ngIf="spaceImages()[0].keywords.length > 0"><strong>Palabras clave:</strong> {{ spaceImages()[0].keywords.join(', ') }}</p>
+            <p *ngIf="spaceImages()[0].keywords.length > 0">
+              <strong>Palabras clave:</strong> {{ spaceImages()[0].keywords.join(', ') }}
+            </p>
           </div>
         </ng-template>
       </ng-template>

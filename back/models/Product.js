@@ -4,8 +4,8 @@ const Product = {
   async create(productData) {
     const sql = `
       INSERT INTO productos 
-      (Nombre, Categoria, Marca, Precio, Stock, Imagen, Descripcion, Disponibilidad)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      (Nombre, Categoria, Marca, Precio, Stock, Imagen, Descripcion, Disponibilidad, NasaId)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     const params = [
@@ -16,7 +16,8 @@ const Product = {
       productData.Stock,
       productData.Imagen || null,
       productData.Descripcion || null,
-      productData.Disponibilidad
+      productData.Disponibilidad,
+      productData.NasaId || null
     ];
 
     const [result] = await pool.query(sql, params);
@@ -34,7 +35,8 @@ const Product = {
         Stock = ?, 
         Imagen = ?, 
         Descripcion = ?, 
-        Disponibilidad = ? 
+        Disponibilidad = ?,
+        NasaId = ?
       WHERE Id = ?
     `;
 
@@ -47,6 +49,7 @@ const Product = {
       productData.Imagen || null,
       productData.Descripcion || null,
       productData.Disponibilidad,
+      productData.NasaId || null,
       product_id
     ];
 
@@ -55,21 +58,21 @@ const Product = {
   },
   
   async getProductById(id) {
-  	const [rows] = await pool.query(
-  		`SELECT * FROM productos WHERE Id = ?`,
-  		[id]
-  	);
-  	return rows[0] || null;
+    const [rows] = await pool.query(
+      `SELECT * FROM productos WHERE Id = ?`,
+      [id]
+    );
+    return rows[0] || null;
   },
 
   async getProductsByCategory(categoria) {
-	  const [rows] = await pool.query(
-	  	`SELECT * FROM productos
-	  	WHERE Categoria = ?
-	  	ORDER BY Nombre ASC`,
-	  	[categoria]
-	  );
-	  return rows;
+    const [rows] = await pool.query(
+      `SELECT * FROM productos
+       WHERE Categoria = ?
+       ORDER BY Nombre ASC`,
+      [categoria]
+    );
+    return rows;
   },
   
   async delete(product_id) {
@@ -84,14 +87,14 @@ const Product = {
   },
 
   async getCategories() {
-	  const [rows] = await pool.query(`
-	  	SELECT DISTINCT Categoria 
-	  	FROM productos
-	  	WHERE Categoria IS NOT NULL AND Categoria != ''
-	  	ORDER BY Categoria ASC
-	  `);
+    const [rows] = await pool.query(`
+      SELECT DISTINCT Categoria 
+      FROM productos
+      WHERE Categoria IS NOT NULL AND Categoria != ''
+      ORDER BY Categoria ASC
+    `);
 
-	  return rows;
+    return rows;
   }
 }
 

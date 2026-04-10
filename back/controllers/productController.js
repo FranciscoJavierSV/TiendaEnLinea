@@ -67,7 +67,8 @@ exports.createProduct = async (req, res) => {
 			Precio,
 			Stock,
 			Descripcion,
-			Disponibilidad
+			Disponibilidad,
+			NasaId
 		} = req.body;
 
 		let Imagen = null;
@@ -84,7 +85,8 @@ exports.createProduct = async (req, res) => {
 			Stock,
 			Imagen,
 			Descripcion,
-			Disponibilidad
+			Disponibilidad,
+			NasaId
 		});
 
 		res.status(201).json({
@@ -121,7 +123,8 @@ exports.updateProduct = async (req, res) => {
 			Precio,
 			Stock,
 			Descripcion,
-			Disponibilidad
+			Disponibilidad,
+			NasaId
 		} = req.body;
 
 		let Imagen = existing.Imagen;
@@ -139,7 +142,8 @@ exports.updateProduct = async (req, res) => {
 			Stock,
 			Imagen,
 			Descripcion,
-			Disponibilidad
+			Disponibilidad,
+			NasaId
 		});
 
 		if (updated === 0) {

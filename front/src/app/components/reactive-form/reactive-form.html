@@ -1,49 +1,54 @@
 <form class="form" [formGroup]="productForm" (ngSubmit)="onSubmit()">
-    <div class="section">
-        <div class="campo">
-            <label for="nombre">Nombre:</label>
-            <input id="nombre" name="nombre" type="text" formControlName="nombre" autocomplete="name">
-        </div>
-
-        <div class="campo">
-            <label for="categoria">Categoría:</label>
-            <input id="categoria" name="categoria" type="text" formControlName="categoria" autocomplete="off">
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="campo">
-            <label for="marca">Marca:</label>
-            <input id="marca" name="marca" type="text" formControlName="marca" autocomplete="off">
-        </div>
-
-        <div class="campo">
-            <label for="precio">Precio:</label>
-            <input id="precio" name="precio" type="number" formControlName="precio" autocomplete="off">
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="campo">
-            <label for="stock">Stock:</label>
-            <input id="stock" name="stock" type="number" formControlName="stock" autocomplete="off">
-        </div>
-
-        <div class="campo">
-            <label for="imagen">Imagen:</label>
-            <input id="imagen" name="imagen" type="text" formControlName="imagen" autocomplete="off">
-        </div>
-    </div>
-
-    <div class="checkbox-group">
-        <label for="disponibilidad">Disponibilidad:</label>
-        <input id="disponibilidad" name="disponibilidad" type="checkbox" formControlName="disponibilidad">
+  <div class="section">
+    <div class="campo">
+      <label for="nombre">Nombre:</label>
+      <input id="nombre" type="text" formControlName="nombre">
     </div>
 
     <div class="campo">
-        <label for="descripcionCorta">Descripción:</label>
-        <textarea id="descripcionCorta" name="descripcionCorta" formControlName="descripcionCorta" rows="10" autocomplete="off"></textarea>
+      <label for="categoria">Categoría:</label>
+      <input id="categoria" type="text" formControlName="categoria">
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="campo">
+      <label for="marca">Marca:</label>
+      <input id="marca" type="text" formControlName="marca">
     </div>
 
-    <button type="submit" [disabled]="productForm.invalid">Guardar</button>
+    <div class="campo">
+      <label for="precio">Precio:</label>
+      <input id="precio" type="number" formControlName="precio">
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="campo">
+      <label for="stock">Stock:</label>
+      <input id="stock" type="number" formControlName="stock">
+    </div>
+
+    <div class="campo">
+      <label for="imagen">Imagen:</label>
+      <input id="imagen" type="file" (change)="onFileSelected($event)">
+    </div>
+  </div>
+
+  <div class="campo">
+    <label for="nasaId">NASA ID:</label>
+    <input id="nasaId" type="text" formControlName="nasaId">
+  </div>
+
+  <div class="checkbox-group">
+    <label for="disponibilidad">Disponibilidad:</label>
+    <input id="disponibilidad" type="checkbox" formControlName="disponibilidad">
+  </div>
+
+  <div class="campo">
+    <label for="descripcion">Descripción:</label>
+    <textarea id="descripcion" formControlName="descripcion" rows="10"></textarea>
+  </div>
+
+  <button type="submit" [disabled]="productForm.invalid">Guardar</button>
 </form>

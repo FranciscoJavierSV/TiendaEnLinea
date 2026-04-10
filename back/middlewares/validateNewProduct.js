@@ -1,4 +1,4 @@
-const validateNewProduct = (req, res,next) => {
+const validateNewProduct = (req, res, next) => {
 	try {
 		const {
 			Nombre,
@@ -6,7 +6,8 @@ const validateNewProduct = (req, res,next) => {
 			Marca,
 			Precio,
 			Stock,
-			Disponibilidad
+			Disponibilidad,
+			NasaId
 		} = req.body;
 
 		// --- VALIDACIONES ---
@@ -61,6 +62,13 @@ const validateNewProduct = (req, res,next) => {
 			return res.status(400).json({
 				ok: false,
 				message: "La disponibilidad debe ser un numero valido"
+			});
+		}
+
+		if (!NasaId || typeof NasaId !== "string" || NasaId.trim() === "") {
+			return res.status(400).json({
+				ok: false,
+				message: "El NasaId debe ser un string válido"
 			});
 		}
 
