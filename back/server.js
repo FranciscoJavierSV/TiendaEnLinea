@@ -5,6 +5,7 @@ const path = require("path");
 
 const pool = require("./db/conexion");
 const productRoutes = require("./routes/productRoutes");
+const commentRoutes = require("./routes/commentRoutes");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -21,6 +22,7 @@ app.use("/images", express.static(imagesPath));
 
 // Rutas 
 app.use("/api/products", productRoutes);
+app.use("/api/comments", commentRoutes);
 
 async function testDBConnection() {
   try {
