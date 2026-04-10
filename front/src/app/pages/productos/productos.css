@@ -6,20 +6,31 @@
     font-size: 16px;
     line-height: 1.5;
     text-align: justify;
-    background-color: #fafafa;
+    background-color: #f8f9fa;
     border-radius: 1rem;
-    color: #222222;
+    color: #2c3e50;
 }
 
 :host-context(.dark-theme) {
-    background-color: #1e1f2a;
-    color: #e6e6e6;
+    background-color: #1a252f;
+    color: #ecf0f1;
+}
+
+h1 {
+    text-align: center;
+    color: #1a252f;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+:host-context(.dark-theme) h1 {
+    color: #3498db;
 }
 
 .productos {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.5rem;
     align-items: stretch;
     justify-content: center;
 }
@@ -28,12 +39,75 @@
     flex: 1 1 260px;
     max-width: 320px;
     min-width: 260px;
-    padding: 1rem 2rem;
-    background-color: #ffffff;
-    border-radius: 1rem;
-    color: #222222;
-    border: 1px solid transparent;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #ffffff 0%, #98cbff 100%);
+    border-radius: 12px;
+    color: #2c3e50;
+    border: 1px solid #838383;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    border-color: #3498db;
+}
+
+.producto img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.producto h3 {
+    margin: 0 0 0.5rem 0;
+    color: #1a252f;
+    font-size: 1.2rem;
+}
+
+.producto p {
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+    color: #5d6d7e;
+}
+
+.producto a {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.producto a:hover {
+    color: #2980b9;
+}
+
+.add-cart {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.add-cart:hover {
+    background: linear-gradient(135deg, #2980b9 0%, #21618c 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
 }
 
 @media (max-width: 1024px) {
@@ -49,20 +123,37 @@
         max-width: 100%;
     }
 }
+
 :host-context(.dark-theme) .producto {
-    background-color: #2b2c40;
-    color: #e6e6e6;
-    border-color: #444;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: #ecf0f1;
+    border-color: #5dade2;
 }
 
-:host-context(.dark-theme) h1 {
-    color: #90caf9;
+:host-context(.dark-theme) .producto:hover {
+    border-color: #85c1e9;
 }
 
-a {
-    color: #1a73e8;
+:host-context(.dark-theme) .producto h3 {
+    color: #ecf0f1;
 }
 
-:host-context(.dark-theme) a {
-    color: #90caf9;
+:host-context(.dark-theme) .producto p {
+    color: #bdc3c7;
+}
+
+:host-context(.dark-theme) .producto a {
+    color: #5dade2;
+}
+
+:host-context(.dark-theme) .producto a:hover {
+    color: #85c1e9;
+}
+
+:host-context(.dark-theme) .add-cart {
+    background: linear-gradient(135deg, #5dade2 0%, #3498db 100%);
+}
+
+:host-context(.dark-theme) .add-cart:hover {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
 }

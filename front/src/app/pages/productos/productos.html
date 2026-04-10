@@ -1,16 +1,16 @@
-<h1>Dale un vistazo a nuestra variedad de productos</h1>
+<h1>Dale un vistazo a nuestra variedad de posters espaciales</h1>
 
 <div class="productos">
   <div class="producto" *ngFor="let c of courses()">
     <h3>{{ c.nombre }}</h3>
+    <img [src]="c.imagen" alt="{{ c.nombre }}">
     <p>Categoria: {{ c.categoria }}</p>
     <p>Marca: {{ c.marca }}</p>
     <p>Precio: ${{ c.precio }}</p>
     <p>Stock: {{ c.stock }}</p>
     <p>Descripción: {{ c.descripcionCorta }}</p>
     <p>Disponible: {{ c.disponibilidad ? 'Sí' : 'No' }}</p>
-    <img [src]="c.imagen" alt="{{ c.nombre }}">
-    <a routerLink="DetalleP">Ver detalle</a>
+    <a [routerLink]="['/detalleproducto', c.id]">Ver detalle</a>
     <button class="add-cart" (click)="addToCart(c)">Agregar al carrito</button>
   </div>
 </div>

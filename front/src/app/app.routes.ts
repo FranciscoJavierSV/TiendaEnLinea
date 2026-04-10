@@ -12,7 +12,7 @@ export const routes: Routes = [
     },{
         path: 'Altas' , component: Altas
     },{
-        path: 'DetalleP', component: Detalleproducto  
+        path: 'detalleproducto/:id', component: Detalleproducto  
     },{
         path: '',redirectTo: 'Inicio',pathMatch: 'full'
     }

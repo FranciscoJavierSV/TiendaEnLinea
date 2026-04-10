@@ -3,11 +3,11 @@
   flex-direction: column;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #f0f8ff;
-  color: #222222;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: #ecf0f1;
   font-size: 1rem;
   transition: all 0.3s ease;
-  border-top: 2px solid #222222;
+  border-top: 2px solid #5dade2;
 }
 
 .footer .content {
@@ -19,7 +19,11 @@
   margin-bottom: 1rem;
 }
 
-.footer-left h3 { margin-bottom: 0.5rem; }
+.footer-left h3 {
+  margin-bottom: 0.5rem;
+  color: #3498db;
+}
+
 .footer-left .datos p { margin: 0.2rem 0; }
 
 .footer-right {
@@ -43,12 +47,12 @@
   transition: color 0.3s ease;
 }
 
-.footer-right .redes a:hover { color: #ffffff; }
+.footer-right .redes a:hover { color: #5dade2; }
 
 .footer hr {
   width: 100%;
   border: none;
-  border-top: 1px solid #222222;
+  border-top: 1px solid #5dade2;
   margin: 0.5rem 0;
   transition: all 0.3s ease;
 }
@@ -61,13 +65,13 @@
 
 /* Tema oscuro aplicado directamente al host */
 .footer.dark-theme {
-  background-color: #121212;
-  color: #e0e0e0;
-  border-top: 2px solid #e0e0e0;
+  background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
+  color: #ecf0f1;
+  border-top: 2px solid #85c1e9;
 }
 
 .footer.dark-theme hr {
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid #85c1e9;
 }
 
 /* Responsividad tablet */
