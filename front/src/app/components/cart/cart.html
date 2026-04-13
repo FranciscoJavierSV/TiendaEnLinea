@@ -1,29 +1,33 @@
-<div class="backdrop" *ngIf="cartState.isOpen()" (click)="cartState.close()" [class.dark-theme]="(themeService.darkTheme$ | async)">
-  <div class="modal" (click)="$event.stopPropagation()">
+<div class="fondo-modal" *ngIf="cartState.isOpen()" (click)="cartState.close()" [class.dark-theme]="(themeService.darkTheme$ | async)">
+  <div class="modal-carrito" (click)="$event.stopPropagation()">
     <h2>Carrito</h2>
 
-    <div *ngIf="items.length === 0" class="empty-cart">
+    <div *ngIf="items.length === 0" class="carrito-vacio">
       <p>Tu carrito está vacío</p>
     </div>
 
-    <div *ngFor="let item of items" class="cart-item">
-      <img [src]="item.image || 'https://via.placeholder.com/50'" [alt]="item.name" class="item-image">
-      <div class="item-details">
+    <div *ngFor="let item of items" class="item-carrito">
+      <img [src]="item.image || 'https://via.placeholder.com/50'" [alt]="item.name" class="imagen-item">
+      <div class="detalles-item">
         <h4>{{ item.name }}</h4>
         <p>{{ item.price | currency:'EUR' }}</p>
-        <div class="quantity-controls">
+        <div class="controles-cantidad">
           <button (click)="updateQuantity(item, item.quantity - 1)">-</button>
           <span>{{ item.quantity }}</span>
           <button (click)="updateQuantity(item, item.quantity + 1)">+</button>
         </div>
       </div>
-      <button (click)="removeItem(item.id)" class="remove-btn">×</button>
+      <button (click)="removeItem(item.id)" class="boton-eliminar">×</button>
     </div>
 
-    <div *ngIf="items.length > 0" class="cart-total">
-      <button class="clear-btn" (click)="clearCart()">Vaciar carrito</button>
+    <div *ngIf="items.length > 0" class="total-carrito">
+      <span class="precio-total">Total: {{ total | currency:'EUR' }}</span>
+      <div class="acciones-carrito">
+        <button class="boton-accion" (click)="purchase()">Comprar</button>
+        <button class="boton-vaciar" (click)="clearCart()">Vaciar carrito</button>
+      </div>
     </div>
 
-    <button (click)="cartState.close()">Cerrar</button>
+    <button class="boton-cerrar" (click)="cartState.close()">Cerrar</button>
   </div>
 </div>

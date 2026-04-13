@@ -4,17 +4,18 @@ import { Productos } from './pages/productos/productos'
 import { Altas } from './pages/altas/altas'
 import { Detalleproducto } from './pages/detalleproducto/detalleproducto';
 
+/* Rutas principales de la aplicación */
 export const routes: Routes = [
     {
-        path: 'Inicio', component: Inicio
+        path: 'inicio', component: Inicio
     },{
-        path: 'Productos', component: Productos
+        path: 'productos', component: Productos
     },{
-        path: 'Altas' , component: Altas
+        path: 'altas', component: Altas
     },{
-        path: 'detalleproducto/:id', component: Detalleproducto  
+        path: 'detalle-producto/:id', component: Detalleproducto
     },{
-        path: '',redirectTo: 'Inicio',pathMatch: 'full'
+        path: '', redirectTo: 'inicio', pathMatch: 'full'
     }
 ];
 

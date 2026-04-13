@@ -29,9 +29,15 @@
       <input id="stock" type="number" formControlName="stock">
     </div>
 
-    <div class="campo">
+    <div class="campo archivo">
       <label for="imagen">Imagen:</label>
-      <input id="imagen" type="file" (change)="onFileSelected($event)">
+      <div class="vista-previa-archivo">
+        {{ selectedFile?.name || 'Ningún archivo seleccionado' }}
+      </div>
+      <div class="campo archivo-boton">
+        <label class="boton-archivo" for="imagen">Seleccionar archivo</label>
+        <input id="imagen" type="file" hidden (change)="onFileSelected($event)">
+      </div>
     </div>
   </div>
 

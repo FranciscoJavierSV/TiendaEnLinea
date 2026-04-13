@@ -11,6 +11,7 @@ import { ProductService } from '../../services/db/product';
   styleUrls: ['./reactive-form.css'],
 })
 export class ReactiveForm implements OnInit {
+  /* Formulario reactivo para registrar un producto nuevo */
   productForm!: FormGroup;
   selectedFile: File | null = null;
 
@@ -29,10 +30,12 @@ export class ReactiveForm implements OnInit {
     });
   }
 
+  /* Al seleccionar un archivo, se guarda en el estado del componente */
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
   }
 
+  /* Enviar el formulario al servicio para guardar el producto */
   onSubmit(): void {
     if (this.productForm.valid && this.selectedFile) {
       const formData = new FormData();

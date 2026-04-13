@@ -1,0 +1,17 @@
+<div class="contenedor-paginacion" [class.dark-theme]="(themeService.darkTheme$ | async)">
+  <div class="info-paginacion">
+    Página {{ currentPage }} de {{ totalPages }}
+  </div>
+
+  <div class="navegacion-paginacion" *ngIf="totalPages > 1">
+    <button class="boton-pagina" (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
+    <button
+      class="boton-pagina"
+      *ngFor="let page of pages"
+      [class.active]="page === currentPage"
+      (click)="selectPage(page)">
+      {{ page }}
+    </button>
+    <button class="boton-pagina" (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+  </div>
+</div>

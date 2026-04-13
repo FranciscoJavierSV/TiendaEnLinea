@@ -1,16 +1,24 @@
 <h1>Dale un vistazo a nuestra variedad de posters espaciales</h1>
 
 <div class="productos">
-  <div class="producto" *ngFor="let c of courses()">
+  <div class="producto" *ngFor="let c of shownCourses()">
     <h3>{{ c.nombre }}</h3>
     <img [src]="c.imagen" alt="{{ c.nombre }}">
     <p>Categoria: {{ c.categoria }}</p>
     <p>Marca: {{ c.marca }}</p>
     <p>Precio: ${{ c.precio }}</p>
-    <p>Stock: {{ c.stock }}</p>
-    <p>Descripción: {{ c.descripcion }}</p>
-    <p>Disponible: {{ c.disponibilidad ? 'Sí' : 'No' }}</p>
-    <a [routerLink]="['/detalleproducto', c.id]">Ver detalle</a>
-    <button class="add-cart" (click)="addToCart(c)">Agregar al carrito</button>
+    <p [class.out-of-stock]="c.stock === 0 || c.disponibilidad === 0">Stock: {{ c.stock }}</p>
+    <p [class.out-of-stock]="c.stock === 0 || c.disponibilidad === 0">Disponible: {{ c.disponibilidad ? 'Sí' : 'No' }}</p>
+    <a [routerLink]="['/detalle-producto', c.id]">Ver detalle</a>
+    <button class="boton-agregar-carrito" [ngClass]="{ disabled: c.stock === 0 || c.disponibilidad === 0 }" (click)="addToCart(c)">
+      {{ c.stock === 0 || c.disponibilidad === 0 ? 'Agotado' : 'Agregar al carrito' }}
+    </button>
   </div>
 </div>
+
+<app-control-pagina
+  [currentPage]="currentPage()"
+  [totalPages]="totalPages()"
+  [pages]="pages()"
+  (pageChange)="changePage($event)">
+</app-control-pagina>

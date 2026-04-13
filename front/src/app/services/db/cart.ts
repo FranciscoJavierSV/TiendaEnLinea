@@ -6,6 +6,7 @@ export interface CartItem {
   price: number;
   image?: string;
   quantity: number;
+  stock?: number;
 }
 
 @Injectable({
@@ -27,9 +28,17 @@ export class Cart {
   }
 
   updateQuantity(id: number, quantity: number) {
-    this.items.update(items => items.map(item =>
-      item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item
-    ));
+    this.items.update(items => items.map(item => {
+      if (item.id !== id) {
+        return item;
+      }
+
+      const clampedQuantity = item.stock
+        ? Math.min(Math.max(1, quantity), item.stock)
+        : Math.max(1, quantity);
+
+      return { ...item, quantity: clampedQuantity };
+    }));
   }
 
   removeItem(id: number) {
@@ -43,12 +52,25 @@ export class Cart {
   addItem(item: CartItem) {
     const current = this.items();
     const existing = current.find(i => i.id === item.id);
+    const maxStock = existing?.stock ?? item.stock;
+
     if (existing) {
+      const nextQuantity = existing.quantity + item.quantity;
+      if (maxStock !== undefined && nextQuantity > maxStock) {
+        return false;
+      }
+
       this.items.set(current.map(i =>
-        i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i
+        i.id === item.id ? { ...i, quantity: nextQuantity, stock: maxStock } : i
       ));
-    } else {
-      this.items.set([...current, item]);
+      return true;
     }
+
+    if (maxStock !== undefined && item.quantity > maxStock) {
+      return false;
+    }
+
+    this.items.set([...current, item]);
+    return true;
   }
 }

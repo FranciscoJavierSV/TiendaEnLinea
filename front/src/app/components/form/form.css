@@ -1,18 +1,20 @@
 :host {
     display: block;
     width: 100%;
-    max-width: 440px;
-    padding: 1rem 2rem;
-    background-color: rgb(141, 141, 141);
-    border-radius: 2rem;
+    max-width: 460px;
+    padding: 1.25rem 1.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
     transition: all 0.3s ease;
     color: #111111;
     box-sizing: border-box;
     margin: 0 auto;
+    box-shadow: 0 18px 42px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 :host-context(.dark-theme) {
-    background-color: #4f5568;
+    background: rgba(30, 41, 59, 0.94);
     color: #e3e7f1;
 }
 
@@ -52,25 +54,35 @@ textarea {
 }
 
 button {
-    padding: 0.85rem;
-    border-radius: 0.75rem;
+    padding: 0.95rem 1rem;
+    border-radius: 16px;
     border: none;
-    background-color: #333333;
+    background-color: #3b82f6;
     color: white;
     cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.18s ease, filter 0.18s ease;
 }
 
 button:hover {
-    background-color: #555555;
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+}
+
+button:disabled {
+    background-color: #94a3b8;
+    cursor: not-allowed;
+    filter: none;
+    transform: none;
 }
 
 :host-context(.dark-theme) button {
-    background-color: #2f384f;
-    color: #f1f4ff;
+    background-color: #2563eb;
+    color: #f8fafc;
 }
 
 :host-context(.dark-theme) button:hover {
-    background-color: #49516d;
+    background-color: #1d4ed8;
 }
 
 @media (max-width: 768px) {

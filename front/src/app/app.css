@@ -16,7 +16,8 @@
     min-height: 100vh;
 }
 
-.content {
+/* Contenedor principal que muestra el contenido de cada página */
+.contenido {
     flex: 1;
     display: flex;
     justify-content: center;

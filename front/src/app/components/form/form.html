@@ -1,7 +1,32 @@
-<form #form="ngForm" (ngSubmit)="onSubmit(form)">
-    <input type="text" class="texto" name="nombre" ngModel required placeholder="Nombre" autocomplete="name">
-    <input type="email" class="texto" name="email" ngModel required placeholder="email" autocomplete="email">
-    <input type="text" class="texto" name="asunto" ngModel placeholder="Asunto" autocomplete="off">
-    <textarea class="texto" name="comentario" ngModel placeholder="Danos tu opinion" rows="6" autocomplete="off"></textarea>
-    <button type="submit">Enviar</button>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+    <div class="form-field">
+        <input type="text" class="texto" name="nombre" ngModel required #nombre="ngModel" placeholder="Nombre" autocomplete="name">
+        <div class="error-message" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+            <span *ngIf="nombre.errors?.['required']">El nombre es obligatorio.</span>
+        </div>
+    </div>
+
+    <div class="form-field">
+        <input type="email" class="texto" name="email" ngModel required #email="ngModel" placeholder="Correo electrónico" autocomplete="email">
+        <div class="error-message" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <span *ngIf="email.errors?.['required']">El correo es obligatorio.</span>
+            <span *ngIf="email.errors?.['email']">Ingresa un correo válido.</span>
+        </div>
+    </div>
+
+    <div class="form-field">
+        <input type="text" class="texto" name="asunto" ngModel required #asunto="ngModel" placeholder="Asunto" autocomplete="off">
+        <div class="error-message" *ngIf="asunto.invalid && (asunto.dirty || asunto.touched)">
+            <span *ngIf="asunto.errors?.['required']">El asunto es obligatorio.</span>
+        </div>
+    </div>
+
+    <div class="form-field">
+        <textarea class="texto" name="comentario" ngModel required #comentario="ngModel" placeholder="Danos tu opinión" rows="6" autocomplete="off"></textarea>
+        <div class="error-message" *ngIf="comentario.invalid && (comentario.dirty || comentario.touched)">
+            <span *ngIf="comentario.errors?.['required']">El mensaje es obligatorio.</span>
+        </div>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid">Enviar</button>
 </form>

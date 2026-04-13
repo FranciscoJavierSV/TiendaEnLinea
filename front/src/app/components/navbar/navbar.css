@@ -1,4 +1,5 @@
-.navbar {
+/* Estilos de la barra de navegación principal */
+.barra-navegacion {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -7,17 +8,18 @@
   padding: 0.5rem 1rem;
   font-size: 1rem;
   position: relative;
+  z-index: 1000;
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.navbar .fa-brands {
+.barra-navegacion .fa-brands {
   font-size: 3rem;
   font-weight: bold;
   color: #3498db;
 }
 
-.navbar-links {
+.enlaces-navegacion {
   list-style: none;
   display: flex;
   gap: 1rem;
@@ -26,7 +28,7 @@
   align-items: center;
 }
 
-.navbar-links a {
+.enlaces-navegacion a {
   text-decoration: none;
   color: inherit;
   font-size: inherit;
@@ -35,26 +37,32 @@
   border-radius: 4px;
 }
 
-.navbar-links a:hover {
-  color: #1a252f;
-  background-color: #5dade2;
+.enlaces-navegacion a:hover {
+  color: #ffffff;
+  background-color: #3498db;
+  transform: translateY(-1px);
 }
 
-.navbar-toggle {
+.barra-navegacion.dark-theme .enlaces-navegacion a:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.boton-menu {
   display: none;
   flex-direction: column;
   cursor: pointer;
   gap: 4px;
 }
 
-.navbar-toggle span {
+.boton-menu span {
   width: 25px;
   height: 3px;
   background-color: currentColor;
   transition: all 0.3s ease;
 }
 
-.BotonD {
+.boton-tema {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -69,44 +77,68 @@
   transition: all 0.3s ease;
 }
 
-.BotonD i {
+.boton-tema i {
   font-size: 1.2rem;
   transition: opacity 0.3s ease;
 }
 
-.BotonD .fa-sun { opacity: 1; color: #fbc02d; }
-.BotonD .fa-moon { opacity: 0; }
+.boton-tema .fa-sun { opacity: 1; color: #fbc02d; }
+.boton-tema .fa-moon { opacity: 0; }
 
-/* Tema oscuro aplicado directamente al nav */
-.navbar.dark-theme {
+/* Tema oscuro aplicado a la barra de navegación */
+.barra-navegacion.dark-theme {
   background-color: #333333;
   color: #ffffff;
 }
 
-.navbar.dark-theme .BotonD {
+.barra-navegacion.dark-theme .boton-tema {
   background-color: #333333;
   border-color: #ffffff;
   color: #ffffff;
 }
 
-.navbar.dark-theme .BotonD .fa-sun { opacity: 0; }
-.navbar.dark-theme .BotonD .fa-moon { opacity: 1; color: #90caf9; }
+.barra-navegacion.dark-theme .boton-tema .fa-sun { opacity: 0; }
+.barra-navegacion.dark-theme .boton-tema .fa-moon { opacity: 1; color: #90caf9; }
 
 @media (max-width: 768px) {
-  .navbar-links {
+  .enlaces-navegacion {
     display: none;
     flex-direction: column;
     background-color: #f0f8ff;
     position: absolute;
     top: 60px;
     right: 0;
-    width: 200px;
+    width: 220px;
     padding: 1rem;
     border: 1px solid #222222;
     border-radius: 8px;
     transition: all 0.3s ease;
+    z-index: 1001;
   }
 
-  .navbar-links.active { display: flex; }
-  .navbar-toggle { display: flex; }
+  .enlaces-navegacion a {
+    color: #1a252f;
+  }
+
+  .enlaces-navegacion a:hover {
+    color: #ffffff;
+    background-color: #3498db;
+  }
+
+  .enlaces-navegacion.active { display: flex; }
+  .boton-menu { display: flex; }
+
+  .barra-navegacion.dark-theme .enlaces-navegacion {
+    background-color: #1a252f;
+    border-color: #4b5563;
+  }
+
+  .barra-navegacion.dark-theme .enlaces-navegacion a {
+    color: #f8fafc;
+  }
+
+  .barra-navegacion.dark-theme .enlaces-navegacion a:hover {
+    color: #ffffff;
+    background-color: rgba(255,255,255,0.08);
+  }
 }

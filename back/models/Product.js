@@ -81,9 +81,20 @@ const Product = {
     return result.affectedRows; 
   },
 
-  async getAllProducts() {
-    const [rows] = await pool.query(`SELECT * FROM productos`);
+  async getAllProducts(page = 1, limit = 10) {
+    const offset = (page - 1) * limit;
+    const [rows] = await pool.query(
+      `SELECT * FROM productos
+       ORDER BY Nombre ASC
+       LIMIT ? OFFSET ?`,
+      [limit, offset]
+    );
     return rows;
+  },
+
+  async countAllProducts() {
+    const [rows] = await pool.query(`SELECT COUNT(*) AS total FROM productos`);
+    return rows[0]?.total || 0;
   },
 
   async getCategories() {

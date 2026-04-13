@@ -4,14 +4,41 @@
     <div class="product-info">
       <img [src]="product()?.imagen" alt="{{ product()?.nombre }}" class="product-image">
       <div class="product-details">
-        <p><strong>Categoría:</strong> {{ product()?.categoria }}</p>
-        <p><strong>Marca:</strong> {{ product()?.marca }}</p>
-        <p><strong>Precio:</strong> ${{ product()?.precio }}</p>
-        <p><strong>Stock:</strong> {{ product()?.stock }}</p>
-        <p><strong>Descripción:</strong> {{ product()?.descripcion }}</p>
-        <p><strong>Disponible:</strong> {{ product()?.disponibilidad ? 'Sí' : 'No' }}</p>
-        <p *ngIf="product()?.nasaId"><strong>NASA ID:</strong> {{ product()?.nasaId }}</p>
-        <button class="add-cart" (click)="addToCart()">Agregar al carrito</button>
+        <div class="product-meta">
+          <div class="detail-card">
+            <p class="detail-label">Categoría</p>
+            <p class="detail-value">{{ product()?.categoria }}</p>
+          </div>
+          <div class="detail-card">
+            <p class="detail-label">Marca</p>
+            <p class="detail-value">{{ product()?.marca }}</p>
+          </div>
+          <div class="detail-card">
+            <p class="detail-label">Precio</p>
+            <p class="detail-value">${{ product()?.precio }}</p>
+          </div>
+          <div class="detail-card">
+            <p class="detail-label">Stock</p>
+            <p class="detail-value">{{ product()?.stock }}</p>
+          </div>
+          <div class="detail-card">
+            <p class="detail-label">Disponible</p>
+            <p class="detail-value">{{ product()?.disponibilidad ? 'Sí' : 'No' }}</p>
+          </div>
+          <div class="detail-card" *ngIf="product()?.nasaId">
+            <p class="detail-label">NASA ID</p>
+            <p class="detail-value">{{ product()?.nasaId }}</p>
+          </div>
+        </div>
+
+        <div class="product-description">
+          <p class="description-label">Descripción</p>
+          <p>{{ product()?.descripcion }}</p>
+        </div>
+
+        <button class="boton-agregar-carrito" [ngClass]="{ disabled: product()?.stock === 0 || product()?.disponibilidad === 0 }" (click)="addToCart()">
+          {{ product()?.stock === 0 || product()?.disponibilidad === 0 ? 'Agotado' : 'Agregar al carrito' }}
+        </button>
       </div>
     </div>
 
@@ -37,11 +64,11 @@
       </ng-template>
     </div>
 
-    <a routerLink="/Productos" class="back-link">Volver a productos</a>
+    <a routerLink="/productos" class="enlace-volver">Volver a productos</a>
   </div>
 
   <ng-template #noProduct>
     <p>Producto no encontrado.</p>
-    <a routerLink="/Productos">Volver a productos</a>
+    <a routerLink="/productos" class="enlace-volver">Volver a productos</a>
   </ng-template>
 </div>

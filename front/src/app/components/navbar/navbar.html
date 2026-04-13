@@ -1,20 +1,20 @@
-<nav class="navbar" [class.dark-theme]="(themeService.darkTheme$ | async)">
-  <div class="fa-brands fa-angular"></div>
+<nav class="barra-navegacion" [class.dark-theme]="(themeService.darkTheme$ | async)">
+  <div class="logo">Bienvenido</div>
 
-  <!-- Botón hamburguesa -->
-  <div class="navbar-toggle" (click)="menuActivo = !menuActivo">
+  <!-- Botón de menú hamburguesa para pantallas pequeñas -->
+  <div class="boton-menu" (click)="menuActivo = !menuActivo">
     <span></span>
     <span></span>
     <span></span>
   </div>
 
-  <!-- Linkscon las paginas  -->
-  <ul class="navbar-links" [class.active]="menuActivo">
-    <li><a routerLink="/Inicio">Inicio</a></li>
-    <li><a routerLink="/Productos">Productos</a></li>
-    <li><a routerLink="/Altas">Agregar</a></li>
+  <!-- Enlaces de navegación principales -->
+  <ul class="enlaces-navegacion" [class.active]="menuActivo">
+    <li><a routerLink="/inicio">Inicio</a></li>
+    <li><a routerLink="/productos">Productos</a></li>
+    <li><a routerLink="/altas">Agregar</a></li>
     <li>
-      <button (click)="toggleTheme()" class="BotonD">
+      <button (click)="toggleTheme()" class="boton-tema">
         <i class="fas fa-sun"></i>
         <i class="fas fa-moon"></i>
       </button>

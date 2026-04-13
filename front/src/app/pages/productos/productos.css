@@ -77,6 +77,11 @@ h1 {
     color: #5d6d7e;
 }
 
+.producto p.out-of-stock {
+    color: #c0392b;
+    font-weight: 700;
+}
+
 .producto a {
     display: inline-block;
     margin-top: 0.5rem;
@@ -90,7 +95,7 @@ h1 {
     color: #2980b9;
 }
 
-.add-cart {
+.boton-agregar-carrito {
     background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
     color: white;
     border: none;
@@ -104,7 +109,55 @@ h1 {
     transition: all 0.3s ease;
 }
 
-.add-cart:hover {
+.pagination-info {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: #2c3e50;
+}
+
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.page-button {
+    background: #ffffff;
+    border: 1px solid #3498db;
+    color: #3498db;
+    padding: 0.65rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    min-width: 48px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.page-button:hover:not(:disabled) {
+    background: #3498db;
+    color: #ffffff;
+}
+
+.page-button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.page-button.active {
+    background: #2980b9;
+    color: #ffffff;
+    border-color: #21618c;
+}
+
+.boton-agregar-carrito.disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.boton-agregar-carritoregar-carrito:hover {
     background: linear-gradient(135deg, #2980b9 0%, #21618c 100%);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
@@ -150,10 +203,10 @@ h1 {
     color: #85c1e9;
 }
 
-:host-context(.dark-theme) .add-cart {
+:host-context(.dark-theme) .boton-agregar-carrito {
     background: linear-gradient(135deg, #5dade2 0%, #3498db 100%);
 }
 
-:host-context(.dark-theme) .add-cart:hover {
+:host-context(.dark-theme) .boton-agregar-carrito:hover {
     background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
 }

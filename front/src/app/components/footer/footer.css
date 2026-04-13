@@ -1,4 +1,5 @@
-.footer {
+/* Estilos del pie de página y sus secciones */
+.pie-pagina {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +11,7 @@
   border-top: 2px solid #5dade2;
 }
 
-.footer .content {
+.pie-pagina .contenido-pie {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -19,37 +20,37 @@
   margin-bottom: 1rem;
 }
 
-.footer-left h3 {
+.pie-izquierda h3 {
   margin-bottom: 0.5rem;
   color: #3498db;
 }
 
-.footer-left .datos p { margin: 0.2rem 0; }
+.pie-izquierda .datos p { margin: 0.2rem 0; }
 
-.footer-right {
+.pie-derecha {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
 
-.footer-right p { margin-bottom: 0.5rem; }
+.pie-derecha p { margin-bottom: 0.5rem; }
 
-.footer-right .redes {
+.pie-derecha .redes {
   display: flex;
   gap: 0.8rem;
   flex-direction: row;
 }
 
-.footer-right .redes a {
+.pie-derecha .redes a {
   color: inherit;
   text-decoration: none;
   font-size: 1.5rem;
   transition: color 0.3s ease;
 }
 
-.footer-right .redes a:hover { color: #5dade2; }
+.pie-derecha .redes a:hover { color: #5dade2; }
 
-.footer hr {
+.pie-pagina hr {
   width: 100%;
   border: none;
   border-top: 1px solid #5dade2;
@@ -57,49 +58,49 @@
   transition: all 0.3s ease;
 }
 
-.footer > p {
+.pie-pagina > p {
   text-align: center;
   margin: 0.5rem 0 0;
   font-size: 0.9rem;
 }
 
-/* Tema oscuro aplicado directamente al host */
-.footer.dark-theme {
+/* Tema oscuro aplicado al pie de página */
+.pie-pagina.dark-theme {
   background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
   color: #ecf0f1;
   border-top: 2px solid #85c1e9;
 }
 
-.footer.dark-theme hr {
+.pie-pagina.dark-theme hr {
   border-top: 1px solid #85c1e9;
 }
 
-/* Responsividad tablet */
+/* Ajustes en tablet */
 @media (max-width: 1024px) {
-  .footer .content {
+  .pie-pagina .contenido-pie {
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 0.5rem;
   }
 
-  .footer-left .datos p { margin: 0.1rem 0; }
-  .footer-right { align-items: center; }
+  .pie-izquierda .datos p { margin: 0.1rem 0; }
+  .pie-derecha { align-items: center; }
 
-  .footer-right .redes {
+  .pie-derecha .redes {
     justify-content: center;
     flex-direction: row;
   }
 }
 
-/* Responsividad móvil */
+/* Ajustes en móvil */
 @media (max-width: 600px) {
-  .footer {
+  .pie-pagina {
     font-size: 0.8rem;
     padding: 1rem;
   }
 
-  .footer-right .redes {
+  .pie-derecha .redes {
     flex-direction: column;
     gap: 0.5rem;
     align-items: center;

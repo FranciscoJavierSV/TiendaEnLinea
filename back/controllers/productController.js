@@ -206,11 +206,23 @@ exports.deleteProduct = async (req, res) => {
 
 exports.getAllProducts = async (req, res) => {
 	try {
-		const products = await Product.getAllProducts();
+		const page = Math.max(1, parseInt(req.query.page, 10) || 1);
+		const limit = Math.max(1, parseInt(req.query.limit, 10) || 8);
+
+		const [products, total] = await Promise.all([
+			Product.getAllProducts(page, limit),
+			Product.countAllProducts(),
+		]);
+
+		const totalPages = Math.max(1, Math.ceil(total / limit));
 
 		res.status(200).json({
 			ok: true,
-			products
+			products,
+			page,
+			limit,
+			total,
+			totalPages
 		});
 	} catch (error) {
 		console.error("Error:", error);

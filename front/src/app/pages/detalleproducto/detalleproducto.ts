@@ -5,6 +5,7 @@ import { SpaceApiService, SpaceImage } from '../../services/ui/space-api.service
 import { Cart, CartItem } from '../../services/db/cart';
 import { ProductService, Product } from '../../services/db/product';
 
+/* Página de detalle de producto que muestra información y permite agregar al carrito */
 @Component({
   selector: 'app-detalleproducto',
   standalone: true,
@@ -13,16 +14,31 @@ import { ProductService, Product } from '../../services/db/product';
   styleUrls: ['./detalleproducto.css'],
 })
 export class Detalleproducto implements OnInit {
+  /* Parámetros de la ruta actual */
   route = inject(ActivatedRoute);
+
+  /* Servicio NASA para obtener imágenes relacionadas */
   spaceApiService = inject(SpaceApiService);
+
+  /* Servicio de carrito para agregar el producto */
   cartService = inject(Cart);
+
+  /* Servicio de productos para obtener el detalle del item */
   productService = inject(ProductService);
 
+  /* Producto cargado actualmente */
   product = signal<Product | null>(null);
+
+  /* Imágenes relacionadas obtenidas de la API de NASA */
   spaceImages = signal<SpaceImage[]>([]);
+
+  /* Indicador de carga mientras se obtiene información */
   loading = signal(true);
+
+  /* Mensaje de error mostrado al usuario en caso de fallo */
   error = signal<string>('');
 
+  /* Carga el producto según el ID presente en la ruta */
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -48,6 +64,7 @@ export class Detalleproducto implements OnInit {
     }
   }
 
+  /* Solicita información de imagen adicional desde la API de NASA */
   private loadSpaceData(product: Product) {
     this.loading.set(true);
     this.error.set('');
@@ -74,18 +91,34 @@ export class Detalleproducto implements OnInit {
     }
   }
 
+  /* Agrega el producto actual al carrito, verificando stock disponible */
   addToCart() {
     const p = this.product();
     if (!p) return;
+
+    if (p.stock === 0 || p.disponibilidad === 0) {
+      alert('No hay stock disponible para este artículo.');
+      return;
+    }
+
+    const existing = this.cartService.getItems().find((item) => item.id === p.id);
+    if (existing && existing.quantity >= p.stock) {
+      alert('No puedes agregar más unidades de este artículo, no hay suficiente stock.');
+      return;
+    }
 
     const item: CartItem = {
       id: p.id!,
       name: p.nombre,
       price: p.precio,
       image: p.imagen,
-      quantity: 1
+      quantity: 1,
+      stock: p.stock,
     };
 
-    this.cartService.addItem(item);
+    const added = this.cartService.addItem(item);
+    if (!added) {
+      alert('No puedes agregar más unidades de este artículo, no hay suficiente stock.');
+    }
   }
 }

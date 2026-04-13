@@ -2,6 +2,7 @@ import { Component} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Form } from "../../components/form/form";
 
+/* Página de inicio con formulario de contacto y bienvenida */
 @Component({
   selector: 'app-inicio',
   standalone: true,

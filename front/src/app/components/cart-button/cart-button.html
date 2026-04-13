@@ -1,4 +1,4 @@
-<button class="cart-fab" (click)="openCart()" [class.dark-theme]="(themeService.darkTheme$ | async)">
+<button class="boton-carrito-flotante" (click)="openCart()" [class.dark-theme]="(themeService.darkTheme$ | async)">
   <i class="fas fa-shopping-cart"></i>
-  <span class="badge" *ngIf="itemCount() > 0">{{ itemCount() }}</span>
+  <span class="insignia" *ngIf="itemCount() > 0">{{ itemCount() }}</span>
 </button>
