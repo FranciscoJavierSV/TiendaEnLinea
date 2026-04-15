@@ -2,11 +2,11 @@
 PORT=3000
 
 # Configuración de la base de datos MySQL local
-DB_HOST=mysql.railway.internal
-DB_USER=root
-DB_PASSWORD="pfZJThiTtuNaQtByHyhMWEGaxaEkojwE"
-DB_NAME=tienda_cosmicatelier
-DB_PORT=3306
+DB_HOST=
+DB_USER=
+DB_PASSWORD=""
+DB_NAME=
+DB_PORT=
 
 # API_KEY=tu_api_key_nasa_aqui
 API_KEY='fhMRlKLbuh0qfSEU4QSy0bBJ4ZAXPNZTSdOha6Cy'
