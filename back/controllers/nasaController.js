@@ -1,42 +1,26 @@
-const https = require('https');
-
-function fetchJson(url) {
-  return new Promise((resolve, reject) => {
-    https
-      .get(url, (res) => {
-        let rawData = '';
-        res.on('data', (chunk) => {
-          rawData += chunk;
-        });
-        res.on('end', () => {
-          try {
-            resolve(JSON.parse(rawData));
-          } catch (error) {
-            reject(error);
-          }
-        });
-      })
-      .on('error', reject);
-  });
-}
-
 exports.getImageByNasaId = async (req, res) => {
   try {
-    const nasaId = req.query.nasa_id;
+    const nasaId = req.query.nasa_id?.trim();
 
     if (!nasaId) {
       return res.status(400).json({
         ok: false,
-        message: 'Falta el parámetro nasa_id'
+        message: 'Falta el parámetro nasa_id en la URL (?nasa_id=...)'
       });
     }
 
-    const query = `nasa_id=${encodeURIComponent(String(nasaId))}&media_type=image`;
-    const apiKeyParam = process.env.API_KEY ? `&api_key=${encodeURIComponent(process.env.API_KEY)}` : '';
-    const url = `https://images-api.nasa.gov/search?${query}${apiKeyParam}`;
+    const url = `https://images-api.nasa.gov/search?nasa_id=${encodeURIComponent(nasaId)}&media_type=image`;
+    
+    console.log('Consultando NASA API:', url);
 
-    const response = await fetchJson(url);
-    const item = response?.collection?.items?.[0];
+    const response = await fetch(url);
+    
+    if (!response.ok) {
+      throw new Error(`Error de red con la NASA: ${response.status} ${response.statusText}`);
+    }
+
+    const dataJson = await response.json();
+    const item = dataJson?.collection?.items?.[0];
 
     if (!item) {
       return res.status(404).json({
@@ -59,11 +43,12 @@ exports.getImageByNasaId = async (req, res) => {
         keywords: data.keywords || []
       }
     });
+
   } catch (error) {
     console.error('Error NASA API:', error);
     res.status(500).json({
       ok: false,
-      message: 'Error obteniendo datos de NASA'
+      message: 'Error interno del servidor al consultar NASA'
     });
   }
 };
