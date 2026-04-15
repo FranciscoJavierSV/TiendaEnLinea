@@ -7,8 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "predeploy": "npm run build",
-    "deploy": "npx gh-pages -d dist/TiendaOnline"
+    "predeploy": "ng build --base-href=/TiendaEnLinea/",
+    "deploy": "npx gh-pages -d dist/TiendaOnline/browser"
   },
   "prettier": {
     "printWidth": 100,
