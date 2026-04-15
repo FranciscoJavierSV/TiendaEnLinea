@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 export interface SpaceImage {
@@ -18,33 +18,28 @@ export interface SpaceImage {
   providedIn: 'root',
 })
 export class SpaceApiService {
-  private apiKey = environment.nasaApiKey;
-  private baseUrl = 'https://images-api.nasa.gov';
+  private baseUrl = `${environment.apiUrl}/nasa`;
 
   constructor(private http: HttpClient) {}
 
   getImageByNasaId(nasaId: number): Observable<SpaceImage> {
-
-    const url = `${this.baseUrl}/search?nasa_id=${encodeURIComponent(String(nasaId))}&media_type=image`;
+    const url = `${this.baseUrl}?nasa_id=${encodeURIComponent(String(nasaId))}`;
 
     return this.http.get<any>(url).pipe(
       map(response => {
-        const item = response.collection?.items?.[0];
+        const image = response?.image;
 
-        if (!item) {
+        if (!image) {
           throw new Error('No se encontró la imagen NASA con ese ID');
         }
 
-        const data = item.data?.[0] || {};
-        const imageUrl = item.links?.[0]?.href || '';
-
         return {
-          title: data.title || 'Imagen NASA',
-          description: data.description || 'Sin descripción disponible.',
-          imageUrl,
-          dateCreated: data.date_created || data.date || '',
-          center: data.center || 'NASA',
-          keywords: data.keywords || []
+          title: image.title || 'Imagen NASA',
+          description: image.description || 'Sin descripción disponible.',
+          imageUrl: image.imageUrl || '',
+          dateCreated: image.dateCreated || '',
+          center: image.center || 'NASA',
+          keywords: image.keywords || []
         };
       })
     );

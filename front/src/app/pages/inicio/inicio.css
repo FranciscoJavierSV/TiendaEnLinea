@@ -150,7 +150,6 @@
 
 .right {
     padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.08);
     border-radius: 1.5rem;
     display: flex;
     align-items: center;
@@ -174,7 +173,6 @@
     }
 
     .right {
-        background: rgba(255, 255, 255, 0.05);
         justify-content: stretch;
     }
 }

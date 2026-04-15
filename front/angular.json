@@ -90,6 +90,10 @@
           },
           "defaultConfiguration": "development"
         }
+      },
+      "scripts": {
+        "build": "ng build",
+        "deploy": "npx gh-pages -d dist/TiendaOnline"
       }
     }
   }

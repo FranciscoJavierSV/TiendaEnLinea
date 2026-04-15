@@ -6,6 +6,7 @@ const path = require("path");
 const pool = require("./db/conexion");
 const productRoutes = require("./routes/productRoutes");
 const commentRoutes = require("./routes/commentRoutes");
+const nasaRoutes = require("./routes/nasaRoutes");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -23,6 +24,7 @@ app.use("/images", express.static(imagesPath));
 // Rutas 
 app.use("/api/products", productRoutes);
 app.use("/api/comments", commentRoutes);
+app.use("/api/nasa", nasaRoutes);
 
 async function testDBConnection() {
   try {
