@@ -2,18 +2,20 @@
     const router = express.Router();
     const multer = require("multer"); 
     const path = require("path");
+const fs = require("fs");
 
-    const productController = require('../controllers/productController');
-    const { validateNewProduct } = require('../middlewares/validateNewProduct');
+const productController = require('../controllers/productController');
+const { validateNewProduct } = require('../middlewares/validateNewProduct');
 
-    // --- MULTER CONFIG ---
-    const storage = multer.diskStorage({
-        destination: function (req, file, cb) {
-            cb(null, 'images/'); 
-        },
-        filename: function (req, file, cb) {
-            // Nombre: timestamp + extension
-            const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+const imagesDir = path.join(__dirname, '../images');
+if (!fs.existsSync(imagesDir)) {
+  fs.mkdirSync(imagesDir, { recursive: true });
+}
+
+// --- MULTER CONFIG ---
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, imagesDir);
             cb(null, uniqueSuffix + path.extname(file.originalname));
         }
     });
