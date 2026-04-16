@@ -96,10 +96,10 @@ exports.createProduct = async (req, res) => {
 		});
 
 	} catch (error) {
-		console.error("Error:", error);
+		console.error("ERROR REAL:", error);
 		res.status(500).json({
 			ok: false,
-			message: "Error interno"
+			message: error.message
 		});
 	}
 };
