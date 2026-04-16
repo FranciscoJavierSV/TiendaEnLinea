@@ -1,50 +1,62 @@
-    const express = require("express");
-    const router = express.Router();
-    const multer = require("multer"); 
-    const path = require("path");
-const fs = require("fs");
+const express = require("express");
+const router = express.Router();
+const multer = require("multer");
+const path = require("path");
 
 const productController = require('../controllers/productController');
 const { validateNewProduct } = require('../middlewares/validateNewProduct');
 
-const imagesDir = path.join(__dirname, '../images');
-if (!fs.existsSync(imagesDir)) {
-  fs.mkdirSync(imagesDir, { recursive: true });
-}
-
 // --- MULTER CONFIG ---
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, imagesDir);
-            cb(null, uniqueSuffix + path.extname(file.originalname));
+        cb(null, 'images/');
+    },
+    filename: function (req, file, cb) {
+        // Nombre: timestamp + extension
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, uniqueSuffix + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({ storage: storage });
+
+// --- RUTAS PUBLICAS ---
+
+// Obtener todos los productos
+router.get("/", productController.getAllProducts);
+
+// Obtener categorias disponibles
+router.get("/categorias", productController.getCategories);
+
+// Obtener productos por categoria
+router.get("/producto/:categoria", productController.getProductsByCategory);
+
+// Obtener producto por ID
+router.get("/:id", productController.getProductById);
+
+// --- RUTAS ADMIN ---
+
+// Crear producto 
+router.post("/", (req, res) => {
+    upload.single("Imagen")(req, res, function (err) {
+        if (err) {
+            return res.status(500).json({ error: err.message });
         }
+
+        validateNewProduct(req, res, async () => {
+            try {
+                await productController.createProduct(req, res);
+            } catch (error) {
+                res.status(500).json({ error: error.message });
+            }
+        });
     });
+});
 
-    const upload = multer({ storage: storage });
+// Actualizar producto
+router.put("/:id", upload.single("Imagen"), validateNewProduct, productController.updateProduct);
 
-    // --- RUTAS PUBLICAS ---
+// Eliminar producto
+router.delete("/:id", productController.deleteProduct);
 
-    // Obtener todos los productos
-    router.get("/", productController.getAllProducts);
-
-    // Obtener categorias disponibles
-    router.get("/categorias", productController.getCategories);
-
-    // Obtener productos por categoria
-    router.get("/producto/:categoria", productController.getProductsByCategory);
-
-    // Obtener producto por ID
-    router.get("/:id", productController.getProductById);
-
-    // --- RUTAS ADMIN ---
-
-    // Crear producto 
-    router.post("/",upload.single("Imagen"),validateNewProduct,productController.createProduct);
-
-    // Actualizar producto
-    router.put("/:id",upload.single("Imagen"),validateNewProduct,productController.updateProduct);
-
-    // Eliminar producto
-    router.delete("/:id", productController.deleteProduct);
-
-    module.exports = router;
+module.exports = router;
