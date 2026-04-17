@@ -12,17 +12,17 @@ import { Card } from '../card/card';
 export class Featured {
   featuredCards = [
     {
-      imgSrc: '/assets/carrusel/first.webp',
+      imgSrc: '/assets/destacados/first.webp',
       title: 'Horizonte orbital',
       description: 'Un diseño que mezcla luz y sombra para una decoración con estilo espacial.',
     },
     {
-      imgSrc: '/assets/carrusel/second.jpg',
+      imgSrc: '/assets/destacados/second.jpg',
       title: 'Nebulosa dorada',
       description: 'Un cuadro que invita a explorar el universo desde un punto de vista íntimo.',
     },
     {
-      imgSrc: '/assets/carrusel/third.jpg',
+      imgSrc: '/assets/destacados/third.jpg',
       title: 'Ventana al espacio',
       description: 'Color y movimiento para una decoración impactante y moderna.',
     },
