@@ -1,0 +1,14 @@
+<section class="featured-section">
+  <header class="featured-header">
+    <h2>Cuadros destacados</h2>
+    <p>Descubre una selección especial de diseños espaciales listos para tu pared.</p>
+  </header>
+  <div class="featured-grid">
+    <app-card
+      *ngFor="let item of featuredCards"
+      [imgSrc]="item.imgSrc"
+      [title]="item.title"
+      [description]="item.description"
+    ></app-card>
+  </div>
+</section>

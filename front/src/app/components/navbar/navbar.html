@@ -1,5 +1,7 @@
 <nav class="barra-navegacion" [class.dark-theme]="(themeService.darkTheme$ | async)">
-  <div class="logo">Bienvenido</div>
+  <div class="logo">
+    <img src="/assets/inicio/logo.png" alt="Logo" width="60" height="60" loading="lazy" />
+  </div>
 
   <!-- Botón de menú hamburguesa para pantallas pequeñas -->
   <div class="boton-menu" (click)="menuActivo = !menuActivo">

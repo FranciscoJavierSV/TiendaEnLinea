@@ -19,6 +19,20 @@
   color: #3498db;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.logo img {
+  width: 120px;
+  height: auto;
+  border-radius: 0.6rem;
+}
+
 .enlaces-navegacion {
   list-style: none;
   display: flex;

@@ -5,117 +5,100 @@
     font-family: 'Arial', sans-serif;
     font-size: 16px;
     color: #2c3e50;
-    line-height: 1.5;
+    line-height: 1.6;
     text-align: justify;
 }
 
-.hero {
+.hero-cont {
     position: relative;
-    height: 520px;
     width: 100%;
     background-size: cover;
     background-position: center;
-    border-radius: 1.25rem;
+    border-radius: 1.5rem;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin-bottom: 2rem;
     min-height: 420px;
-    background-color: #0b1120;
+    background-color: #11243d;
 }
 
-.hero-overlay {
+.hero-mask {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.45), rgba(5, 10, 19, 0.92));
+    background: linear-gradient(180deg, rgba(12, 23, 45, 0.58), rgba(9, 17, 29, 0.88));
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 2rem;
+    justify-content: flex-start;
+    padding: 3rem;
 }
 
-.hero-copy {
-    max-width: 860px;
+.hero-panel {
+    max-width: 720px;
     color: #ffffff;
-    text-align: left;
 }
 
-.hero-label {
+.hero-tag {
     text-transform: uppercase;
-    letter-spacing: 0.3rem;
+    letter-spacing: 0.24rem;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 0.75rem;
-    font-size: 0.85rem;
+    color: rgba(209, 223, 255, 0.88);
+    margin-bottom: 0.9rem;
+    font-size: 0.87rem;
 }
 
-.hero h1 {
+.hero-cont h1 {
     margin: 0;
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 4vw, 3.75rem);
     line-height: 1.05;
     letter-spacing: -0.03em;
     margin-bottom: 1rem;
 }
 
-.hero-description {
-    max-width: 700px;
-    margin-bottom: 1rem;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.92);
+.hero-text {
+    max-width: 640px;
+    margin-bottom: 1.5rem;
+    line-height: 1.75;
+    color: rgba(237, 244, 255, 0.94);
 }
 
-.hero-meta {
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 1rem;
-}
-
-.hero-video-note {
-    color: rgba(255, 255, 255, 0.85);
-    margin-top: 1rem;
-}
-
-.hero-video-note a {
-    color: #7ee8fa;
-    text-decoration: underline;
-}
-
-.hero-status {
+.hero-button {
     display: inline-block;
-    padding: 0.65rem 1rem;
+    padding: 1rem 1.75rem;
     border-radius: 999px;
-    background: rgba(0, 0, 0, 0.45);
+    background: linear-gradient(90deg, #6a83bc 0%, #5ab3d0 100%);
     color: #ffffff;
-    font-weight: 600;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.hero-status.error {
-    background: rgba(255, 107, 107, 0.95);
-}
-
-.image img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+.hero-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(90, 179, 208, 0.22);
 }
 
 .info {
     margin: 2rem 0;
-    padding: 1rem;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    border-left: 4px solid #3498db;
+    padding: 2rem;
+    background-color: #f4f7fb;
+    border-radius: 1.25rem;
+    border-left: 5px solid #5b5fc7;
+    box-shadow: 0 18px 40px rgba(31, 43, 56, 0.06);
+}
+
+.info h1 {
+    margin-top: 0;
+    font-size: 2rem;
 }
 
 .info ul {
     margin: 1rem 0;
-    padding-left: 2rem;
+    padding-left: 1.75rem;
 }
 
 .info li {
-    margin: 0.5rem 0;
+    margin: 0.65rem 0;
 }
+
 
 .contact {
     display: grid;
@@ -162,6 +145,20 @@
 }
 
 @media (max-width: 768px) {
+    :host {
+        width: 100%;
+        padding: 1rem 1.5rem;
+    }
+
+    .hero-mask {
+        padding: 2rem;
+        justify-content: center;
+    }
+
+    .hero-panel {
+        text-align: center;
+    }
+
     .contact {
         grid-template-columns: 1fr;
         padding: 1.5rem;
@@ -182,14 +179,19 @@
     color: #ecf0f1;
 }
 
-:host-context(.dark-theme) .hero h1 {
-    color: #3498db;
+:host-context(.dark-theme) .hero-cont h1 {
+    color: #d6dbff;
 }
 
 :host-context(.dark-theme) .info {
-    background-color: #34495e;
-    border-left-color: #5dade2;
+    background-color: #2d3a56;
+    border-left-color: #7e8cff;
     color: #ecf0f1;
+}
+
+:host-context(.dark-theme) .info p,
+:host-context(.dark-theme) .info li {
+    color: #d0d8ec;
 }
 
 :host-context(.dark-theme) .contact {
@@ -198,8 +200,9 @@
 
 :host-context(.dark-theme) .left,
 :host-context(.dark-theme) .right {
-    border-color: #85c1e9;
+    color: #ecf0f1;
 }
+
 
 :host-context(.dark-theme) .left h1 {
     color: #a9cce3;
