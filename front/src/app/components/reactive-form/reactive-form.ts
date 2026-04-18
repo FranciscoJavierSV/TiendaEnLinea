@@ -51,6 +51,7 @@ export class ReactiveForm implements OnInit {
 
       this.productService.createProduct(formData).subscribe({
         next: (res) => {
+          alert('Producto registrado exitosamente');
           console.log('Producto registrado:', res);
           this.productForm.reset({
             nombre: '',
@@ -64,7 +65,10 @@ export class ReactiveForm implements OnInit {
           });
           this.selectedFile = null;
         },
-        error: (err) => console.error('Error al registrar producto:', err)
+        error: (err) => {
+          alert('Error al registrar producto');
+          console.error('Error al registrar producto:', err);
+        }
       });
     }
   }
