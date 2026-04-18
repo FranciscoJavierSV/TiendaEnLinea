@@ -50,7 +50,20 @@ export class ReactiveForm implements OnInit {
       formData.append('Imagen', this.selectedFile);
 
       this.productService.createProduct(formData).subscribe({
-        next: (res) => console.log('Producto registrado:', res),
+        next: (res) => {
+          console.log('Producto registrado:', res);
+          this.productForm.reset({
+            nombre: '',
+            categoria: '',
+            marca: '',
+            precio: 0,
+            stock: 0,
+            descripcion: '',
+            disponibilidad: true,
+            nasaId: ''
+          });
+          this.selectedFile = null;
+        },
         error: (err) => console.error('Error al registrar producto:', err)
       });
     }
